@@ -14,8 +14,8 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(function (
 ) {
   const { changePath } = useContext(RouterContext);
 
-  // 링크를 클릭했을 때 서버로 요청을 보내지 않도록
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    // 링크를 클릭했을 때 서버로 요청을 보내지 않도록 브라우저의 기본 동작을 막는다.
     e.preventDefault();
     changePath(to);
   };
