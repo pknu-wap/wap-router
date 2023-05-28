@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 
-interface LinkProps extends React.HTMLAttributes<HTMLAnchorElement> {
+interface LinkProps
+  extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href"> {
   to: string;
   children: React.ReactNode;
 }
