@@ -1,1 +1,1 @@
-export { default as decodeParams } from "./decodeParams";
+export { default as matchRoutes } from "./matchRoutes";

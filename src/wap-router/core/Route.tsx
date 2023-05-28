@@ -1,6 +1,7 @@
 interface RouteProps {
   path: string;
   element: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
