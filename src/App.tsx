@@ -1,6 +1,4 @@
-import Route from "./lib/core/Route";
-import Router from "./lib/core/Router";
-import Routes from "./lib/core/Routes";
+import { Route, Router, Routes } from "./lib";
 import AboutPage from "./pages/AboutPage";
 import HomePage from "./pages/HomePage";
 
