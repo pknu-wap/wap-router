@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 interface RouterContextProps {
   path: string;
-  changePath: React.Dispatch<React.SetStateAction<string>>;
+  changePath: (path: string) => void;
 }
 
 const RouterContext = createContext<RouterContextProps>({
