@@ -1,5 +1,5 @@
 import Navigator from "../components/Navigator";
-import { useNavigate } from "../lib";
+import { useNavigate } from "../wap-router";
 
 const HomePage = () => {
   const navigate = useNavigate();

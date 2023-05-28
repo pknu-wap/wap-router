@@ -1,4 +1,4 @@
-import { Link } from "../lib";
+import { Link } from "../wap-router";
 
 const Navigator = () => {
   return (

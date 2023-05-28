@@ -1,4 +1,4 @@
-import { Route, Router, Routes } from "./lib";
+import { Router, Routes, Route } from "./wap-router";
 import AboutPage from "./pages/AboutPage";
 import HomePage from "./pages/HomePage";
 
