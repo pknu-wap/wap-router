@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import RouterContext from "./RouterContext";
+import RouterContext from "../context/RouterContext";
 
 interface RouterProps {
   children: React.ReactNode;

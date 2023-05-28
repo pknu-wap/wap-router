@@ -1,5 +1,5 @@
 import { useCallback, useContext } from "react";
-import RouterContext from "../core/RouterContext";
+import RouterContext from "../context/RouterContext";
 
 const useNavigate = () => {
   const { path, changePath } = useContext(RouterContext);

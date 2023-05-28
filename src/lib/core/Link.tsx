@@ -1,5 +1,5 @@
 import { forwardRef, useContext } from "react";
-import RouterContext from "./RouterContext";
+import { RouterContext } from "../context";
 
 interface LinkProps
   // href는 to로 전달하기 때문에 제거
