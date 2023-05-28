@@ -1,6 +1,6 @@
 import Navigator from "../components/Navigator";
 
-const HomePAge = () => {
+const HomePage = () => {
   return (
     <div>
       <Navigator />
@@ -9,4 +9,4 @@ const HomePAge = () => {
   );
 };
 
-export default HomePAge;
+export default HomePage;
