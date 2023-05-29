@@ -64,17 +64,18 @@ const Routes = ({ children }: RoutesProps) => {
 
     if (currentRoute.params.length) {
       const urlParams = getUrlParams(currentRoute, path);
-      // return currentRoute.element(urlParams);
       console.log("urlParamss", urlParams);
       console.log("currentRoute.element", currentRoute.element);
+
+      return currentRoute.element;
     } else {
-      // return currentRoute.element();
       console.log("currentRoute.element", currentRoute.element);
+
+      return currentRoute.element;
     }
   };
 
-  checkRoute();
-  // return checkRoute();
+  return checkRoute();
 
   // -----------------------------
 

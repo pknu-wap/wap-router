@@ -16,7 +16,7 @@ const Navigator = () => {
       <Link to="/">Home</Link>
       <Link to="/about">About</Link>
       <Link to="/main/product">Product</Link>
-      <Link to="/main/product/1">Product Detail-1</Link>
+      <Link to="/main/product/21/user/32">Product Detail-1</Link>
     </div>
   );
 };
