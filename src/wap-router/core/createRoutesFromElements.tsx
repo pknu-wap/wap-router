@@ -15,9 +15,7 @@ const createRoutesFromElements = (
     // path가 없는 경우, path를 생성한다.
     if (element.type === React.Fragment) {
       // Transparently support React.Fragment and its children.
-      routes = routes.concat(
-        createRoutesFromElements(element.props.children, treePath)
-      );
+      routes = [...routes, ...createRoutesFromElements(element.props.children)];
       return;
     }
 

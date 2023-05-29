@@ -1,6 +1,5 @@
 import Navigator from "../components/Navigator";
-import { Route, useNavigate } from "../wap-router";
-import createRoutesFromElements from "../wap-router/core/createRoutesFromElements";
+import { useNavigate } from "../wap-router";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -8,20 +7,6 @@ const HomePage = () => {
   const handleClick = () => {
     navigate("/about");
   };
-
-  const Test = () =>
-    createRoutesFromElements(
-      <>
-        <Route path="/test" element={<HomePage />} />
-        <Route path="/test" element={<HomePage />} />
-        <Route path="/test" element={<HomePage />}>
-          <Route path="/test" element={<HomePage />} />
-        </Route>
-        <Route path="/test" element={<HomePage />} />
-      </>
-    );
-
-  console.log(Test());
 
   return (
     <div>
