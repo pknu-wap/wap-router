@@ -8,23 +8,26 @@ interface LinkProps
   children: React.ReactNode;
 }
 
-const Link = forwardRef<HTMLAnchorElement, LinkProps>(function (
-  { to, children, ...props },
-  ref
-) {
-  const { changePath } = useContext(RouterContext);
+const Link = forwardRef<HTMLAnchorElement, LinkProps>(
+  ({ to, children, ...props }, ref) => {
+    const { changePath } = useContext(RouterContext);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    // 링크를 클릭했을 때 서버로 요청을 보내지 않도록 브라우저의 기본 동작을 막는다.
-    e.preventDefault();
-    changePath(to);
-  };
+    const handleClick = (
+      e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+    ) => {
+      // 링크를 클릭했을 때 서버로 요청을 보내지 않도록 브라우저의 기본 동작을 막는다.
+      e.preventDefault();
+      changePath(to);
+    };
 
-  return (
-    <a href={to} ref={ref} {...props} onClick={handleClick}>
-      {children}
-    </a>
-  );
-});
+    return (
+      <a href={to} ref={ref} {...props} onClick={handleClick}>
+        {children}
+      </a>
+    );
+  }
+);
+
+Link.displayName = "Link";
 
 export default Link;
