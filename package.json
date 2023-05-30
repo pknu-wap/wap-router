@@ -30,7 +30,7 @@
   "lint-staged": {
     "./src/**/*": [
       "prettier --write \"src/**/*.{ts,tsx}\"",
-      "eslint --fix \"src/**/*.{ts,tsx}\""
+      "eslint --config .eslintrc.json --fix \"src/**/*.{ts,tsx}\""
     ]
   },
   "devDependencies": {

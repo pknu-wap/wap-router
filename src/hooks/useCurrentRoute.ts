@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import type { Route } from '../types';
+import type { RouteConfig } from '../types';
 import { RouterContext } from '../context';
 
-const useCurrentRoute = (routes: Route[]): Route | undefined => {
+const useCurrentRoute = (routes: RouteConfig[]): RouteConfig | undefined => {
   const { path } = useContext(RouterContext);
   return routes.find((route) => route.fragmentRegExp.test(path));
 };

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { RouteContext, RouterContext } from '../context';
-import type { Route } from '../types';
+import type { RouteConfig } from '../types';
 import { getParams, parseUrlRoutes } from '../utils';
 import { useCurrentRoute } from '../hooks';
 
@@ -11,7 +11,7 @@ interface RoutesProps {
 const Routes = ({ children }: RoutesProps) => {
   const { path } = useContext(RouterContext);
 
-  const routes: Route[] = parseUrlRoutes(children);
+  const routes: RouteConfig[] = parseUrlRoutes(children);
 
   const currentRoute = useCurrentRoute(routes);
 

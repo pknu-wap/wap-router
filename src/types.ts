@@ -4,7 +4,7 @@ export type RouteObject = {
   children?: RouteObject[];
 };
 
-export type Route = {
+export type RouteConfig = {
   fragmentRegExp: RegExp;
   element: React.ReactNode;
   params: string[];

@@ -2,16 +2,16 @@ import React from 'react';
 import { renderHook } from '@testing-library/react';
 import { RouterContext } from '../../context';
 import useCurrentRoute from '../useCurrentRoute';
-import type { Route } from '../../types';
+import type { RouteConfig } from '../../types';
 
 describe('useCurrentRoute', () => {
-  const home: Route = {
+  const home: RouteConfig = {
     fragmentRegExp: /\/home/,
     params: [],
     element: <div>home</div>,
   };
 
-  const post: Route = {
+  const post: RouteConfig = {
     fragmentRegExp: /\/post\/([^/]+)/,
     params: ['postId'],
     element: <div>post</div>,

@@ -1,6 +1,6 @@
-import type { Route } from '../types';
+import type { RouteConfig } from '../types';
 
-const getParams = (route: Route, path: string) => {
+const getParams = (route: RouteConfig, path: string) => {
   const params: { [key: string]: string } = {};
   const matches = path.match(route.fragmentRegExp);
 

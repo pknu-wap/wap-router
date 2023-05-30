@@ -1,11 +1,11 @@
-import { createRoutesFromElements } from '../core';
-import { Route } from '../types';
+import createRoutesFromElements from '../core/createRoutesFromElements';
+import type { RouteConfig } from '../types';
 
 const ROUTE_PARAMETER_REGEXP = /:(\w+)/g;
 const URL_REGEXP = '([^\\/]+)';
 
-const parseUrlRoutes = (children: React.ReactNode): Route[] => {
-  const routes: Route[] = [];
+const parseUrlRoutes = (children: React.ReactNode): RouteConfig[] => {
+  const routes: RouteConfig[] = [];
   createRoutesFromElements(children).forEach((route) => {
     const params: string[] = [];
     const parsedFragment = route.path
