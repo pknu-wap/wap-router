@@ -83,5 +83,8 @@
     "wap",
     "wap-router",
     "pknu-wap"
-  ]
+  ],
+  "dependencies": {
+    "wap-router": "^0.0.11"
+  }
 }

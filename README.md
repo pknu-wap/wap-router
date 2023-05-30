@@ -31,11 +31,11 @@ $ npm intall wap-router
 
 ## 구현 목록
 
-#### 라이브러리 관련
+### 라이브러리 관련
 
 - [ ] rollup
 
-#### 기본적인 라우팅
+### 기본적인 라우팅
 
 - [x] Link
 - [x] Router
@@ -45,7 +45,7 @@ $ npm intall wap-router
 - [x] 브라우저의 뒤로 가기 / 앞으로 가기 (onPushState / onPopState / history)
 - [x] useNavigate
 
-#### 동적 라우팅
+### 동적 라우팅
 
 - [x] dynamic routes
 - [x] useParams
