@@ -12,8 +12,10 @@ const Routes = ({ children }: RoutesProps) => {
   const { path } = useContext(RouterContext);
 
   const routes: Route[] = parseUrlRoutes(children);
+  console.log(routes);
 
   const currentRoute = useCurrentRoute(routes);
+  console.log(currentRoute);
 
   if (!currentRoute || !currentRoute.element) {
     return null;
@@ -22,6 +24,7 @@ const Routes = ({ children }: RoutesProps) => {
   const params = currentRoute.params.length
     ? getParams(currentRoute, path)
     : {};
+  console.log(params);
 
   return (
     // RouteContext.Provider를 통해 현재 route의 params를 전달

@@ -23,12 +23,13 @@
     "test": "jest",
     "build": "rollup -c",
     "publish:wap-router": "pnpm build && yarn publish --access public",
-    "format": "prettier --write \"*/**/*.{js,json,md} \" \"src/**/*.{ts,tsx,js,json,md}\"",
-    "lint": "eslint --fix \"src/**/*.{ts,tsx}\""
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint --fix \"src/**/*.{ts,tsx}\"",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "./src/**/*": [
-      "prettier --write \"*/**/*.{js,json,md} \" \"src/**/*.{ts,tsx,js,json,md}\"",
+      "prettier --write \"src/**/*.{ts,tsx}\"",
       "eslint --fix \"src/**/*.{ts,tsx}\""
     ]
   },
