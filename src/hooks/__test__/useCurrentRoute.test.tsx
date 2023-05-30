@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { render, renderHook } from '@testing-library/react';
+import React from 'react';
+import { renderHook } from '@testing-library/react';
 import { RouterContext } from '../../context';
 import useCurrentRoute from '../useCurrentRoute';
 import type { Route } from '../../types';
