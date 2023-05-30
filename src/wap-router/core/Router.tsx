@@ -16,11 +16,6 @@ const Router = ({ children }: RouterProps) => {
     window.history.pushState({ path }, "", path); // 브라우저의 주소창에 주소를 바꾼다.
   };
 
-  const contextValue = {
-    path,
-    changePath,
-  };
-
   // popstate 이벤트는 브라우저의 주소창에 변화가 생겼을 때 발생한다.
   // 브라우저의 주소창에 변화가 생기면 path 상태를 업데이트한다.
   // 리액트가 브라우저의 주소창에 변화가 생겼음을 알게 되면 path 상태를 업데이트한다.
@@ -37,7 +32,7 @@ const Router = ({ children }: RouterProps) => {
   }, []);
 
   return (
-    <RouterContext.Provider value={contextValue}>
+    <RouterContext.Provider value={{ path, changePath }}>
       {children}
     </RouterContext.Provider>
   );

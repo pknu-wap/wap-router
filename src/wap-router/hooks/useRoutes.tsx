@@ -1,4 +1,4 @@
-import { RouteObject } from "../types";
+import type { RouteObject } from "../types";
 
 const useRoutes = (routes: RouteObject[]): React.ReactElement | null => {
   return <div>asdf</div>;

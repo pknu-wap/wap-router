@@ -1,7 +1,7 @@
-import React, { Children, isValidElement, useContext } from "react";
-import RouterContext from "../context/RouterContext";
+import React, { useContext } from "react";
 import { createRoutesFromElements } from ".";
-import { RouteContext } from "../context";
+import { RouteContext, RouterContext } from "../context";
+import type { Route } from "../types";
 
 interface RoutesProps {
   children: React.ReactNode;
@@ -9,13 +9,6 @@ interface RoutesProps {
 
 const Routes = ({ children }: RoutesProps) => {
   const { path } = useContext(RouterContext);
-
-  // -----------------------------
-  type Route = {
-    fragmentRegExp: RegExp;
-    element: React.ReactNode;
-    params: string[];
-  };
 
   const ROUTE_PARAMETER_REGEXP = /:(\w+)/g; // :name, :song등 path parameters를 매칭하기 위한 정규표현식
   const URL_REGEXP = "([^\\/]+)"; // path parameter를 제외한 나머지 path를 매칭하기 위한 정규표현식
@@ -50,44 +43,23 @@ const Routes = ({ children }: RoutesProps) => {
     return params;
   };
 
-  const checkRoute = () => {
-    const currentRoute = routes.find((route) =>
-      route.fragmentRegExp.test(path)
-    );
+  const currentRoute = routes.find((route) => route.fragmentRegExp.test(path));
 
-    if (!currentRoute || !currentRoute.element) {
-      return null;
-    }
+  if (!currentRoute || !currentRoute.element) {
+    return null;
+  }
 
-    const params = currentRoute.params.length
-      ? getParams(currentRoute, path)
-      : {};
+  const params = currentRoute.params.length
+    ? getParams(currentRoute, path)
+    : {};
 
-    return (
-      // RouteContext.Provider를 통해 현재 route의 params를 전달
-      // useParams() hook을 통해 현재 route의 params를 사용할 수 있음
-      <RouteContext.Provider value={{ params }}>
-        {currentRoute.element}
-      </RouteContext.Provider>
-    );
-  };
-
-  return checkRoute();
-
-  // -----------------------------
-
-  let element = null;
-
-  Children.forEach(children, (child) => {
-    if (!isValidElement(child)) return; // ignore non-elements
-    if (child.type === React.Fragment) return; // ignore fragments
-    if (!child.props.path || !child.props.element) return; // ignore non-routes
-    if (child.props.path !== path) return; // ignore routes that don't match
-
-    element = child.props.element; // this is the one!
-  });
-
-  return element;
+  return (
+    // RouteContext.Provider를 통해 현재 route의 params를 전달
+    // useParams() hook을 통해 현재 route의 params를 사용할 수 있음
+    <RouteContext.Provider value={{ params }}>
+      {currentRoute.element}
+    </RouteContext.Provider>
+  );
 };
 
 export default Routes;

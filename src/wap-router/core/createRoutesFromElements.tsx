@@ -1,5 +1,5 @@
 import React, { isValidElement } from "react";
-import { RouteObject } from "../types";
+import type { RouteObject } from "../types";
 
 // JSX Route들로부터 Object Route들을 생성한다.
 const createRoutesFromElements = (
