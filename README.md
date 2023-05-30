@@ -20,7 +20,7 @@ wap-router은 react routing library입니다.
 
 #### 동적 라우팅
 
-- [ ] dynamic routes
+- [x] dynamic routes
 - [ ] useParams
 - [ ] useLocation
 - [ ] useSearchParams

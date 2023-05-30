@@ -1,6 +1,7 @@
 import React, { Children, isValidElement, useContext } from "react";
 import RouterContext from "../context/RouterContext";
 import { createRoutesFromElements } from ".";
+import { RouteContext } from "../context";
 
 interface RoutesProps {
   children: React.ReactNode;
@@ -36,13 +37,11 @@ const Routes = ({ children }: RoutesProps) => {
     });
   });
 
-  console.log("routes", routes);
-
-  const getUrlParams = (route: Route, path: string) => {
+  const getParams = (route: Route, path: string) => {
     const params: { [key: string]: string } = {};
     const matches = path.match(route.fragmentRegExp);
 
-    matches?.shift();
+    matches?.shift(); // 첫번째 매칭은 전체 path이므로 제거
     matches?.forEach((paramValue, idx) => {
       const paramName = route.params[idx];
       params[paramName] = paramValue;
@@ -56,23 +55,21 @@ const Routes = ({ children }: RoutesProps) => {
       route.fragmentRegExp.test(path)
     );
 
-    console.log("currentRoute", currentRoute);
-
     if (!currentRoute || !currentRoute.element) {
       return null;
     }
 
-    if (currentRoute.params.length) {
-      const urlParams = getUrlParams(currentRoute, path);
-      console.log("urlParamss", urlParams);
-      console.log("currentRoute.element", currentRoute.element);
+    const params = currentRoute.params.length
+      ? getParams(currentRoute, path)
+      : {};
 
-      return currentRoute.element;
-    } else {
-      console.log("currentRoute.element", currentRoute.element);
-
-      return currentRoute.element;
-    }
+    return (
+      // RouteContext.Provider를 통해 현재 route의 params를 전달
+      // useParams() hook을 통해 현재 route의 params를 사용할 수 있음
+      <RouteContext.Provider value={{ params }}>
+        {currentRoute.element}
+      </RouteContext.Provider>
+    );
   };
 
   return checkRoute();
