@@ -1,7 +1,9 @@
 import Navigator from "../components/Navigator";
-import { useNavigate } from "../wap-router";
+import { useNavigate, useParams } from "../wap-router";
 
 const ProductDetailPage = () => {
+  const { productId, userId } = useParams();
+
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -12,6 +14,9 @@ const ProductDetailPage = () => {
     <div>
       <Navigator />
       <div>ProductDetailPage</div>
+      <div>
+        productId: {productId}, userId: {userId}
+      </div>
       <div>
         <button onClick={handleClick}>Go To Home Page</button>
       </div>
