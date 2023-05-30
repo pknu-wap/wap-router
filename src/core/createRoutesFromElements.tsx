@@ -7,6 +7,7 @@ const createRoutesFromElements = (
   parentPath: number[] = [],
 ): RouteObject[] => {
   let routes: RouteObject[] = [];
+
   React.Children.forEach(children, (element, idx) => {
     if (!isValidElement(element)) return;
 
@@ -14,7 +15,7 @@ const createRoutesFromElements = (
 
     // path가 없는 경우, path를 생성한다.
     if (element.type === React.Fragment) {
-      // Transparently support React.Fragment and its children.
+      // React.Fragment와 그 자식들을 지원한다.
       routes = [...routes, ...createRoutesFromElements(element.props.children)];
       return;
     }
