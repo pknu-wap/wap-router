@@ -33,7 +33,7 @@ $ npm intall wap-router
 
 ### 라이브러리 관련
 
-- [ ] rollup
+- [x] rollup
 
 ### 기본적인 라우팅
 
@@ -52,3 +52,5 @@ $ npm intall wap-router
 - [ ] useLocation
 - [ ] useSearchParams
 - [ ] Outlet
+- [ ] wildcard routes
+- [ ] useSearchParams

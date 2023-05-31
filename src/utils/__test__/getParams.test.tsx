@@ -1,10 +1,10 @@
 import React from 'react';
 import getParams from '../getParams';
-import { Route } from '../../types';
+import type { RouteConfig } from '../../types';
 
 describe('getParams', () => {
   const Home = () => <div>Home</div>;
-  const route: Route = {
+  const route: RouteConfig = {
     fragmentRegExp: /\/user\/([^/]+)\/post\/([^/]+)/,
     params: ['userId', 'postId'],
     element: <Home />,

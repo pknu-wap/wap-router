@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { RouteContext, RouterContext } from '../context';
-import type { RouteConfig } from '../types';
+import type { RouteConfig, RouteObject } from '../types';
 import { getParams, parseUrlRoutes } from '../utils';
 import { useCurrentRoute } from '../hooks';
+import createRoutesFromElements from './createRoutesFromElements';
 
 interface RoutesProps {
   children: React.ReactNode;
@@ -11,9 +12,9 @@ interface RoutesProps {
 const Routes = ({ children }: RoutesProps) => {
   const { path } = useContext(RouterContext);
 
-  const routes: RouteConfig[] = parseUrlRoutes(children);
-
-  const currentRoute = useCurrentRoute(routes);
+  const routeObjects: RouteObject[] = createRoutesFromElements(children);
+  const routeConfigs: RouteConfig[] = parseUrlRoutes(routeObjects);
+  const currentRoute = useCurrentRoute(routeConfigs);
 
   if (!currentRoute || !currentRoute.element) {
     return null;
