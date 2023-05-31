@@ -1,36 +1,31 @@
-import React, { isValidElement } from 'react';
+import React, { isValidElement, Children, Fragment } from 'react';
 import type { RouteObject } from '../types';
+import Route from './Route';
 
 // JSX Route들로부터 Object Route들을 생성한다.
-const createRoutesFromElements = (
-  children: React.ReactNode,
-  parentPath: number[] = [],
-): RouteObject[] => {
+const createRoutesFromElements = (children: React.ReactNode): RouteObject[] => {
   let routes: RouteObject[] = [];
 
-  React.Children.forEach(children, (element, idx) => {
-    if (!isValidElement(element)) return;
+  Children.forEach(children, (child) => {
+    if (!isValidElement(child)) return;
 
-    const treePath = [...parentPath, idx];
-
-    // path가 없는 경우, path를 생성한다.
-    if (element.type === React.Fragment) {
-      // React.Fragment와 그 자식들을 지원한다.
-      routes = [...routes, ...createRoutesFromElements(element.props.children)];
+    if (child.type === Fragment) {
+      routes = [...routes, ...createRoutesFromElements(child.props.children)];
       return;
     }
+    if (!child.props.path || !child.props.element) return;
+    if (typeof child.props.path !== 'string') return;
+    if (child.type !== Route) {
+      console.log(child.type);
 
-    const route: RouteObject = {
-      element: element.props.element,
-      path: element.props.path,
-    };
-
-    if (element.props.children) {
-      route.children = createRoutesFromElements(
-        element.props.children,
-        treePath,
+      throw new Error(
+        'All child components within the <Routes> component must be either a <Route> component or a <React.Fragment> component.',
       );
     }
+    const route: RouteObject = {
+      element: child.props.element,
+      path: child.props.path,
+    };
 
     routes.push(route);
   });

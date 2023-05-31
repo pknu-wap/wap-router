@@ -6,8 +6,8 @@ describe('getParams', () => {
   const Home = () => <div>Home</div>;
   const route: RouteConfig = {
     fragmentRegExp: /\/user\/([^/]+)\/post\/([^/]+)/,
-    params: ['userId', 'postId'],
     element: <Home />,
+    params: ['userId', 'postId'],
   };
 
   it('should extract params from path', () => {
