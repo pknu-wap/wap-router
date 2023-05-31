@@ -16,8 +16,6 @@ const createRoutesFromElements = (children: React.ReactNode): RouteObject[] => {
     if (!child.props.path || !child.props.element) return;
     if (typeof child.props.path !== 'string') return;
     if (child.type !== Route) {
-      console.log(child.type);
-
       throw new Error(
         'All child components within the <Routes> component must be either a <Route> component or a <React.Fragment> component.',
       );

@@ -2,6 +2,8 @@ import type { RouteConfig } from '../types';
 
 const getParams = (route: RouteConfig, path: string) => {
   const params: { [key: string]: string } = {};
+
+  // REGEXP match는 매칭된 문자열(전체 문자열)과 그룹으로 매칭된 문자열을 배열로 반환, 없으면 null 반환
   // ex) matches = ["/post/12/user/34", "12", "34"]
   const matches = path.match(route.fragmentRegExp);
 
