@@ -14,6 +14,7 @@ describe('createRoutesFromElements', () => {
             path="/product/:productId/user/:userId"
             element={<div>Product User</div>}
           />
+          <Route path="/*" element={<div>Not Found</div>} />
         </>,
       ),
     ).toEqual([
@@ -32,6 +33,10 @@ describe('createRoutesFromElements', () => {
       {
         element: <div>Product User</div>,
         path: '/product/:productId/user/:userId',
+      },
+      {
+        element: <div>Not Found</div>,
+        path: '/*',
       },
     ]);
   });

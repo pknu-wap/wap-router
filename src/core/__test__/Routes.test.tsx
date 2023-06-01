@@ -88,4 +88,29 @@ describe('Routes', () => {
 
     expect(getByText('Product User')).toBeInTheDocument();
   });
+
+  it('should render not found route', () => {
+    const wrapper = ({ children }: { children: React.ReactNode }) => (
+      <RouterContext.Provider
+        value={{
+          path: { pathname: '/unknown', hash: '', search: '' },
+          changePath: jest.fn,
+        }}
+      >
+        {children}
+      </RouterContext.Provider>
+    );
+
+    const { getByText } = render(
+      <Routes>
+        <Route path="/" element={<div>Home</div>} />
+        <Route path="/about" element={<div>About</div>} />
+        <Route path="/product/:productId" element={<div>Product</div>} />
+        <Route path="/*" element={<div>Not Found</div>} />
+      </Routes>,
+      { wrapper },
+    );
+
+    expect(getByText('Not Found')).toBeInTheDocument();
+  });
 });
