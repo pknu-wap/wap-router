@@ -50,7 +50,7 @@ $ npm intall wap-router
 - [x] dynamic routes
 - [x] useParams
 - [x] useLocation -> usePath
-- [ ] wildcard routes
+- [x] wildcard routes
 
 ### 참고
 
