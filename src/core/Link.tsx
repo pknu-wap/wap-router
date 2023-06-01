@@ -8,6 +8,14 @@ interface LinkProps
   children: React.ReactNode;
 }
 
+/**
+ * @example
+ *
+ * <Link to="/home">Home</Link>
+ *
+ * @description
+ * Link 컴포넌트를 클릭하면 changePath 함수를 호출하여 to에 해당하는 값으로 path 상태를 업데이트한다.
+ */
 const Link = forwardRef<HTMLAnchorElement, LinkProps>(function (
   { to, children, ...props },
   ref,

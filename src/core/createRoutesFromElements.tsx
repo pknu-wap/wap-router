@@ -2,7 +2,13 @@ import React, { isValidElement, Children, Fragment } from 'react';
 import type { RouteObject } from '../types';
 import Route from './Route';
 
-// JSX Route들로부터 Object Route들을 생성한다.
+/**
+ * @description children을 통해 routeObjects를 생성
+ *
+ * 1. isValidElement를 통해 ReactElement인지 확인
+ * 2. React.Fragment를 받으면 그 안의 children을 통해 routeObjects를 생성
+ * 3. Route 컴포넌트가 아닌 컴포넌트는 에러를 발생시킴
+ */
 const createRoutesFromElements = (children: React.ReactNode): RouteObject[] => {
   let routes: RouteObject[] = [];
 

@@ -1,6 +1,13 @@
 import { useCallback, useContext } from 'react';
 import { RouterContext } from '../context';
 
+/**
+ * @example
+ *
+ * const navigate = useNavigate();
+ *
+ * // navigate('/main/product/45?sort=asc#title')
+ */
 const useNavigate = () => {
   const { path, changePath } = useContext(RouterContext);
 

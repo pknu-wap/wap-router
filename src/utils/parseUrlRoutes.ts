@@ -1,5 +1,26 @@
 import type { RouteConfig, RouteObject } from '../types';
 
+/**
+ * @description routeObjects를 파싱하여 RouteConfig 객체로 반환
+ *
+ * @example
+ *
+ * // routeObject
+ * {
+ *  path: '/post/:postId/user/:userId',
+ *  element: <PostUser />,
+ * }
+ *
+ * // routeConfig
+ * {
+ *  fragmentRegExp: /^\/post\/([^\/]+)\/user\/([^\/]+)$/,
+ *  element: <PostUser />,
+ *  params: ['postId', 'userId'],
+ * }
+ *
+ * // 이러한 routeConfig들의 배열을 생성한다
+ *
+ */
 const parseUrlRoutes = (routeObjects: RouteObject[]): RouteConfig[] => {
   const routes: RouteConfig[] = [];
   routeObjects.forEach((route) => {

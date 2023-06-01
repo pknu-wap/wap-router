@@ -1,5 +1,8 @@
 import type { RouteConfig } from '../types';
 
+/**
+ * @description route의 REGEXP에 매칭된 문자열을 파라미터 이름을 키로 사용하여 객체로 반환
+ */
 const getParams = (route: RouteConfig, path: string) => {
   const params: { [key: string]: string } = {};
 

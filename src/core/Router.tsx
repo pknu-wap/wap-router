@@ -7,6 +7,10 @@ interface RouterProps {
   children: React.ReactNode;
 }
 
+/**
+ * @description
+ * 브라우저의 주소창에 변화가 생기면 path 상태를 업데이트한다.
+ */
 const Router = ({ children }: RouterProps) => {
   // 요청한 주소를 path 상태로 관리한다.
   // 처음 요청한 주소를 기본값으로 사용한다.

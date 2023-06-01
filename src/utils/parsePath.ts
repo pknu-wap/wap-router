@@ -1,5 +1,16 @@
 import type { Path } from '../types';
 
+/**
+ * @description path를 pathname, search, hash로 분리하여 객체로 반환
+ *
+ * @example
+ * parsePath('/post/12/user/34#comment-123')
+ * // {
+ * //   pathname: '/post/12/user/34',
+ * //   search: '',
+ * //   hash: '#comment-123',
+ * // }
+ */
 const parsePath = (path: string): Path => {
   const parsedPath: Path = {
     pathname: '',
