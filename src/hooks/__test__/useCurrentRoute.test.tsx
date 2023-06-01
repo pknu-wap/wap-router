@@ -23,7 +23,13 @@ describe('useCurrentRoute', () => {
     element: <div>category sub</div>,
   };
 
-  const routes = [home, post, category];
+  const notfound = {
+    fragmentRegExp: /^\/(.*)$/,
+    params: [],
+    element: <div>not found</div>,
+  };
+
+  const routes = [home, post, category, notfound];
 
   it('should return current route based on path', () => {
     const path = {
@@ -73,7 +79,7 @@ describe('useCurrentRoute', () => {
     expect(result.current).toBe(category);
   });
 
-  it('should return undefined if no current route found', () => {
+  it('should return "/*" if no current route found', () => {
     const path = { pathname: '/unknown', hash: '', search: '' };
     const changePath = jest.fn();
     const wrapper = ({ children }: { children: React.ReactNode }) => (
@@ -83,6 +89,6 @@ describe('useCurrentRoute', () => {
     );
 
     const { result } = renderHook(() => useCurrentRoute(routes), { wrapper });
-    expect(result.current).toBeUndefined();
+    expect(result.current).toBe(notfound);
   });
 });
