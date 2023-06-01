@@ -1,6 +1,6 @@
 <h1 align="center">WAP Router</h1>
 
-wap-router은 react routing library입니다.
+wap-router은 react-router-dom의 영향을 받아 개발한 리액트 라우팅 라이브러리입니다.
 
 <p align="center">
   <a href="https://github.com/pknu-wap/wap-router/blob/main/LICENSE">
@@ -17,6 +17,13 @@ wap-router은 react routing library입니다.
   <img src="https://badgen.net/packagephobia/publish/wap-router"/>
 </p>
 
+## Feature
+
+- **Declarative Routing**: 컴포넌트 기반으로 라우팅을 정의하고 표현할 수 있습니다.
+- **Dynamic Routing**: 동적 라우팅을 지원합니다.
+- **lightweight**: 불필요한 코드를 모두 제거하여 경량화된 라이브러리입니다.
+- **Support Typescript**: 타입스크립트를 지원합니다.
+
 ## Installation
 
 Install this library with the following command.
@@ -29,30 +36,120 @@ $ yarn add wap-router
 $ npm intall wap-router
 ```
 
-## 구현 목록
+## Usage
 
-### 라이브러리 관련
+우선 라우팅을 정의할 컴포넌트를 생성합니다.
+동적 라우팅은 ":"를 사용하여 정의합니다. ex) "/main/product/:productId/user/:userId"
+"\*"를 사용하여 와일드카드 라우팅을 정의할 수 있습니다. ex) "/main/product/\*"
+주의할 점은 Route의 순서에 따라 라우팅이 결정되기 때문에 주의해야합니다.
+ex) "/product/:productId", "/product/123" 순으로 정의하면 "/product/123"은 "/product/:productId"로 라우팅됩니다.
 
-- [x] rollup
+```tsx
+import { Router, Routes, Route } from 'wap-router';
+import AboutPage from './pages/AboutPage';
+import HomePage from './pages/HomePage';
+import ProductPage from './pages/ProductPage';
+import ProductDetailPage from './pages/ProductDetailPage';
+import NotFoundPage from './pages/NotFoundPage';
 
-### 기본적인 라우팅
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/main/product" element={<ProductPage />} />
+        <Route
+          path="/main/product/:productId/user/:userId"
+          element={<ProductDetailPage />}
+        />
+        {/* "/*"은 모든 경로를 매칭시킨다. */}
+        <Route path="/*" element={<NotFoundPage />} />
+      </Routes>
+    </Router>
+  );
+};
 
-- [x] Link
-- [x] Router
-- [x] Routes
-- [x] Route
-- [x] 브라우저에 표시된 주소 변경
-- [x] 브라우저의 뒤로 가기 / 앞으로 가기 (onPushState / onPopState / history)
-- [x] useNavigate
+export default App;
+```
 
-### 동적 라우팅
+Link 컴포넌트를 사용하여 라우팅을 변경할 수 있습니다.
 
-- [x] dynamic routes
-- [x] useParams
-- [x] useLocation -> usePath
-- [x] wildcard routes
+```tsx
+import { Link } from 'wap-router';
 
-### 참고
+const HomePage = () => {
+  return (
+    <div>
+      <h1>Home Page</h1>
+      <Link to="/about">About</Link>
+      <Link to="/main/product">Product</Link>
+    </div>
+  );
+};
+```
 
-location: {hash, pathname, search}
-ex) /main/1?name=abc#name 이면 location: {hash: #name, pathname: /main/1, search: ?name=abc}
+useNavigate를 사용하여 라우팅을 변경할 수 있습니다.
+
+```tsx
+import { useNavigate } from 'wap-router';
+
+const ProductPage = () => {
+  const navigate = useNavigate();
+  return (
+    <div>
+      <h1>Product Page</h1>
+      <button onClick={() => navigate('/main/product/123/user/456')}>
+        Product Detail
+      </button>
+    </div>
+  );
+};
+```
+
+useParams를 사용하여 현재 경로의 동적 라우팅 정보를 알 수 있습니다.
+
+```tsx
+import { useParams } from 'wap-router';
+
+// route => "/main/product/:productId/user/:userId"
+// path  => "/main/product/123/user/456"
+
+// productId: 123, userId: 456
+
+const ProductDetailPage = () => {
+  const { productId, userId } = useParams();
+  return (
+    <div>
+      <h1>Product Detail Page</h1>
+      <p>productId: {productId}</p>
+      <p>userId: {userId}</p>
+    </div>
+  );
+};
+```
+
+usePath를 사용하여 현재 경로의 정보를 알 수 있습니다.
+
+```tsx
+import { usePath } from 'wap-router';
+
+// route => "/main/product/:productId/user/:userId"
+// path  => "/main/product/123/user/456?name=abc#name"
+
+// pathname: "/main/product/123/user/456"
+// search: "?name=abc"
+// hash: "#name"
+
+const ProductDetailPage = () => {
+  const { pathname, hash, search } = usePath();
+  return (
+    <div>
+      <h1>Product Detail Page</h1>
+      <p>
+        pathname: {pathname}, search: {search}, hash: {hash}
+      </p>
+    </div>
+  );
+};
+```
