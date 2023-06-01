@@ -14,7 +14,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "removeComments": false // 주석을 제거하지 않음
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
