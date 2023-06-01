@@ -4,7 +4,7 @@ import { RouterContext } from '../context';
 
 const useCurrentRoute = (routes: RouteConfig[]): RouteConfig | undefined => {
   const { path } = useContext(RouterContext);
-  return routes.find((route) => route.fragmentRegExp.test(path));
+  return routes.find((route) => route.fragmentRegExp.test(path.pathname));
 };
 
 export default useCurrentRoute;

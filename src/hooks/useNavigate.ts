@@ -6,7 +6,7 @@ const useNavigate = () => {
 
   const navigate = useCallback(
     (nextPath: string) => {
-      if (path === nextPath) return;
+      if (path.pathname === nextPath) return;
 
       changePath(nextPath);
     },

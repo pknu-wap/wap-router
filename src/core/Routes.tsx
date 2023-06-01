@@ -21,7 +21,7 @@ const Routes = ({ children }: RoutesProps) => {
   }
 
   const params = currentRoute.params.length
-    ? getParams(currentRoute, path)
+    ? getParams(currentRoute, path.pathname)
     : {};
 
   return (
