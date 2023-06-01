@@ -21,7 +21,7 @@ const Router = ({ children }: RouterProps) => {
     const { hash, pathname, search } = parsePath(path);
     setPath({ hash, pathname, search });
     // pushState의 data에 path를 넣어서 상태를 업데이트한다.
-    window.history.pushState({ path }, '', path); // 브라우저의 주소창에 주소를 바꾼다.
+    window.history.pushState({ pathname, hash, search }, '', path); // 브라우저의 주소창에 주소를 바꾼다.
   };
 
   // popstate 이벤트는 브라우저의 주소창에 변화가 생겼을 때 발생한다.
@@ -29,11 +29,10 @@ const Router = ({ children }: RouterProps) => {
   // 리액트가 브라우저의 주소창에 변화가 생겼음을 알게 되면 path 상태를 업데이트한다.
   useEffect(() => {
     const handleOnPopState = (e: PopStateEvent) => {
-      const { hash, pathname, search } = e.state?.path || {
-        hash: '',
-        pathname: '/',
-        search: '',
-      };
+      const hash = e.state?.hash || '';
+      const pathname = e.state?.pathname || '/';
+      const search = e.state?.search || '';
+
       setPath({
         hash,
         pathname,

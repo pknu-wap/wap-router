@@ -49,11 +49,8 @@ $ npm intall wap-router
 
 - [x] dynamic routes
 - [x] useParams
-- [ ] useLocation
-- [ ] useSearchParams
-- [ ] Outlet
+- [x] useLocation -> usePath
 - [ ] wildcard routes
-- [ ] useSearchParams
 
 ### 참고
 
