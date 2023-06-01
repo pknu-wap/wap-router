@@ -6,6 +6,8 @@ describe('parsePath', () => {
     const result = parsePath(path);
     expect(result).toEqual({
       pathname: '/user/main',
+      hash: '',
+      search: '',
     });
   });
 
@@ -14,6 +16,7 @@ describe('parsePath', () => {
     const result = parsePath(path);
     expect(result).toEqual({
       pathname: '/user/main',
+      hash: '',
       search: '?name=John&tag=1',
     });
   });
@@ -24,6 +27,7 @@ describe('parsePath', () => {
     expect(result).toEqual({
       pathname: '/user/main',
       hash: '#profile',
+      search: '',
     });
   });
 

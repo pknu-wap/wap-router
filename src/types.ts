@@ -9,7 +9,7 @@ export type RouteConfig = {
   params: string[];
 };
 
-export type Location = {
+export type Path = {
   pathname: string;
   search: string;
   hash: string;

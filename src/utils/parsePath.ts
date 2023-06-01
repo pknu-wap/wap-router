@@ -1,25 +1,29 @@
-import type { Location } from '../types';
+import type { Path } from '../types';
 
-const parsePath = (path: string): Partial<Location> => {
-  const parsedPath: Partial<Location> = {};
+const parsePath = (path: string): Path => {
+  const parsedPath: Path = {
+    pathname: '',
+    search: '',
+    hash: '',
+  };
 
-  if (!path) return parsedPath;
+  if (path) {
+    const hashIndex = path.indexOf('#');
+    if (hashIndex >= 0) {
+      parsedPath.hash = path.substring(hashIndex);
+      path = path.substring(0, hashIndex);
+    }
 
-  const hashIndex = path.indexOf('#');
-  if (hashIndex >= 0) {
-    parsedPath.hash = path.substring(hashIndex);
-    path = path.substring(0, hashIndex);
+    const searchIndex = path.indexOf('?');
+    if (searchIndex >= 0) {
+      parsedPath.search = path.substring(searchIndex);
+      path = path.substring(0, searchIndex);
+    }
+
+    if (path) {
+      parsedPath.pathname = path;
+    }
   }
-
-  const searchIndex = path.indexOf('?');
-  if (searchIndex >= 0) {
-    parsedPath.search = path.substring(searchIndex);
-    path = path.substring(0, searchIndex);
-  }
-
-  if (!path) return parsedPath;
-
-  parsedPath.pathname = path;
 
   return parsedPath;
 };

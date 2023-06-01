@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import RouterContext from '../context/RouterContext';
+import type { Path } from '../types';
+import { parsePath } from '../utils';
 
 interface RouterProps {
   children: React.ReactNode;
@@ -8,10 +10,16 @@ interface RouterProps {
 const Router = ({ children }: RouterProps) => {
   // 요청한 주소를 path 상태로 관리한다.
   // 처음 요청한 주소를 기본값으로 사용한다.
-  const [path, setPath] = useState(window.location.pathname);
+  const { hash, pathname, search } = window.location;
+  const [path, setPath] = useState<Path>({
+    hash,
+    pathname,
+    search,
+  });
 
   const changePath = (path: string) => {
-    setPath(path);
+    const { hash, pathname, search } = parsePath(path);
+    setPath({ hash, pathname, search });
     // pushState의 data에 path를 넣어서 상태를 업데이트한다.
     window.history.pushState({ path }, '', path); // 브라우저의 주소창에 주소를 바꾼다.
   };
@@ -21,7 +29,16 @@ const Router = ({ children }: RouterProps) => {
   // 리액트가 브라우저의 주소창에 변화가 생겼음을 알게 되면 path 상태를 업데이트한다.
   useEffect(() => {
     const handleOnPopState = (e: PopStateEvent) => {
-      setPath(e.state?.path || '/');
+      const { hash, pathname, search } = e.state?.path || {
+        hash: '',
+        pathname: '/',
+        search: '',
+      };
+      setPath({
+        hash,
+        pathname,
+        search,
+      });
     };
 
     window.addEventListener('popstate', handleOnPopState);
