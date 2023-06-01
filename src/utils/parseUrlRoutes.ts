@@ -7,7 +7,7 @@ const parseUrlRoutes = (routeObjects: RouteObject[]): RouteConfig[] => {
   const routes: RouteConfig[] = [];
   routeObjects.forEach((route) => {
     const params: string[] = [];
-    const parsedFragment = route.path
+    let parsedFragment = route.path
       // ":"로 시작하는 문자열을 찾아서 params에 저장하고, URL_REGEXP로 치환
       .replace(ROUTE_PARAMETER_REGEXP, (_match, paramName) => {
         params.push(paramName);
@@ -15,6 +15,11 @@ const parseUrlRoutes = (routeObjects: RouteObject[]): RouteConfig[] => {
       })
       // 정규식으로 사용하기 위해 "/"를 "\/"로 치환
       .replace(/\//g, '\\/');
+
+    if (parsedFragment.endsWith('*')) {
+      // "*"로 끝나는 경우, \/(.*)$로 치환 (정규식에서 .*는 모든 문자열을 의미)
+      parsedFragment = parsedFragment.replace(/\*$/, '(.*)');
+    }
 
     routes.push({
       // 정규식으로 사용하기 위해 "^"와 "$"를 추가
