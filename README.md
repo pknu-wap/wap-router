@@ -38,10 +38,10 @@ $ npm intall wap-router
 
 ## Usage
 
-우선 라우팅을 정의할 컴포넌트를 생성합니다.
-동적 라우팅은 ":"를 사용하여 정의합니다. ex) "/main/product/:productId/user/:userId"
-"\*"를 사용하여 와일드카드 라우팅을 정의할 수 있습니다. ex) "/main/product/\*"
-주의할 점은 Route의 순서에 따라 라우팅이 결정되기 때문에 주의해야합니다.
+우선 라우팅을 정의할 컴포넌트를 생성합니다.  
+동적 라우팅은 ":"를 사용하여 정의합니다. ex) "/main/product/:productId/user/:userId"  
+"\*"를 사용하여 와일드카드 라우팅을 정의할 수 있습니다. ex) "/main/product/\*"  
+주의할 점은 Route의 순서에 따라 라우팅이 결정되기 때문에 주의해야합니다.  
 ex) "/product/:productId", "/product/123" 순으로 정의하면 "/product/123"은 "/product/:productId"로 라우팅됩니다.
 
 ```tsx
