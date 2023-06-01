@@ -20,6 +20,10 @@ describe('parseUrlRoutes', () => {
         path: '/category/:categoryName/:categoryId',
         element: <div>Category</div>,
       },
+      {
+        path: '/*',
+        element: <div>Not Found</div>,
+      },
     ];
 
     expect(parseUrlRoutes(routeObjects)).toEqual([
@@ -42,6 +46,11 @@ describe('parseUrlRoutes', () => {
         element: <div>Category</div>,
         fragmentRegExp: /^\/category\/([^\\/]+)\/([^\\/]+)$/,
         params: ['categoryName', 'categoryId'],
+      },
+      {
+        element: <div>Not Found</div>,
+        fragmentRegExp: /^\/(.*)$/,
+        params: [],
       },
     ]);
   });
