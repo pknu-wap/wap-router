@@ -1,7 +1,7 @@
 import type { RouteConfig, RouteObject } from '../types';
 
-const ROUTE_PARAMETER_REGEXP = /:(\w+)/g;
-const URL_REGEXP = '([^\\/]+)';
+const ROUTE_PARAMETER_REGEXP = /:(\w+)/g; // ":"로 시작하는 문자열을 의미
+const URL_REGEXP = '([^\\/]+)'; // URL에서 "/"를 제외한 문자열을 의미
 
 const parseUrlRoutes = (routeObjects: RouteObject[]): RouteConfig[] => {
   const routes: RouteConfig[] = [];
