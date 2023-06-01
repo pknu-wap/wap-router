@@ -54,3 +54,8 @@ $ npm intall wap-router
 - [ ] Outlet
 - [ ] wildcard routes
 - [ ] useSearchParams
+
+### 참고
+
+location: {hash, pathname, search}
+ex) /main/1?name=abc#name 이면 location: {hash: #name, pathname: /main/1, search: ?name=abc}

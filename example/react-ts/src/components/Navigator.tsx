@@ -13,10 +13,13 @@ const Navigator = () => {
         gap: '20px',
       }}
     >
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-      <Link to="/main/product">Product</Link>
-      <Link to="/main/product/21/user/32">Product Detail-1</Link>
+      <Link to="/">/</Link>
+      <Link to="/about">/about</Link>
+      <Link to="/main/product">/main/product</Link>
+      <Link to="/main/product/21/user/32">/main/product/21/user/32</Link>
+      <Link to="/main/product?tab=1&category=2#hashswan">
+        /main/product?tab=1&category=2#hashswan
+      </Link>
     </div>
   );
 };

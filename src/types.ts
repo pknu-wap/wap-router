@@ -8,3 +8,9 @@ export type RouteConfig = {
   element: React.ReactNode;
   params: string[];
 };
+
+export type Location = {
+  pathname: string;
+  search: string;
+  hash: string;
+};
