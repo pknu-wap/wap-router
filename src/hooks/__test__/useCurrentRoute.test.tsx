@@ -26,7 +26,11 @@ describe('useCurrentRoute', () => {
   const routes = [home, post, category];
 
   it('should return current route based on path', () => {
-    const path = '/home';
+    const path = {
+      pathname: '/home',
+      hash: '',
+      search: '',
+    };
     const wrapper = ({ children }: { children: React.ReactNode }) => (
       <RouterContext.Provider value={{ path, changePath: jest.fn }}>
         {children}
@@ -38,7 +42,11 @@ describe('useCurrentRoute', () => {
   });
 
   it('should return current route base on params path', () => {
-    const path = '/post/456';
+    const path = {
+      pathname: '/post/456',
+      hash: '',
+      search: '',
+    };
     const wrapper = ({ children }: { children: React.ReactNode }) => (
       <RouterContext.Provider value={{ path, changePath: jest.fn }}>
         {children}
@@ -50,7 +58,11 @@ describe('useCurrentRoute', () => {
   });
 
   it('should return current route base on two params path', () => {
-    const path = '/main/category/456/sub/789';
+    const path = {
+      pathname: '/main/category/456/sub/789',
+      hash: '',
+      search: '',
+    };
     const wrapper = ({ children }: { children: React.ReactNode }) => (
       <RouterContext.Provider value={{ path, changePath: jest.fn }}>
         {children}
@@ -62,7 +74,7 @@ describe('useCurrentRoute', () => {
   });
 
   it('should return undefined if no current route found', () => {
-    const path = '/unknown';
+    const path = { pathname: '/unknown', hash: '', search: '' };
     const changePath = jest.fn();
     const wrapper = ({ children }: { children: React.ReactNode }) => (
       <RouterContext.Provider value={{ path, changePath }}>

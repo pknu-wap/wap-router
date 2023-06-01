@@ -6,9 +6,13 @@ import { RouterContext } from '../../context';
 
 describe('Routes', () => {
   it('should render the current route (no params)', () => {
-    const path = '/';
     const wrapper = ({ children }: { children: React.ReactNode }) => (
-      <RouterContext.Provider value={{ path, changePath: jest.fn }}>
+      <RouterContext.Provider
+        value={{
+          path: { pathname: '/', hash: '', search: '' },
+          changePath: jest.fn,
+        }}
+      >
         {children}
       </RouterContext.Provider>
     );
@@ -30,9 +34,13 @@ describe('Routes', () => {
   });
 
   it('should render the current route (1 params)', () => {
-    const path = '/product/123';
     const wrapper = ({ children }: { children: React.ReactNode }) => (
-      <RouterContext.Provider value={{ path, changePath: jest.fn }}>
+      <RouterContext.Provider
+        value={{
+          path: { pathname: '/product/123', hash: '', search: '' },
+          changePath: jest.fn,
+        }}
+      >
         {children}
       </RouterContext.Provider>
     );
@@ -54,9 +62,13 @@ describe('Routes', () => {
   });
 
   it('should render the current route (n params)', () => {
-    const path = '/product/123/user/456';
     const wrapper = ({ children }: { children: React.ReactNode }) => (
-      <RouterContext.Provider value={{ path, changePath: jest.fn }}>
+      <RouterContext.Provider
+        value={{
+          path: { pathname: '/product/123/user/456', hash: '', search: '' },
+          changePath: jest.fn,
+        }}
+      >
         {children}
       </RouterContext.Provider>
     );
