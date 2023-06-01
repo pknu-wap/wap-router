@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 500px;
+  padding: 5rem;
+}
+
+.left {
+  width: 50%;
+  background-color: #aae0ff;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+}
+
+.left div {
+  border: solid 1px #d4d4d4;
+  padding: 0.3rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  background-color: #fff;
+}
+
+.left a {
+  text-decoration: none;
+  color: #000;
+}
+
+.left a:hover {
+  color: red;
+}
+
+.right {
+  width: 50%;
+  background-color: #ccf9a6;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  gap: 1rem;
+}

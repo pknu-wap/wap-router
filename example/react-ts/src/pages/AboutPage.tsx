@@ -1,12 +1,7 @@
-import Navigator from "../components/Navigator";
+import Template from '../components/Template';
 
 const AboutPage = () => {
-  return (
-    <div>
-      <Navigator />
-      <div>AboutPage</div>
-    </div>
-  );
+  return <Template>"/about"</Template>;
 };
 
 export default AboutPage;

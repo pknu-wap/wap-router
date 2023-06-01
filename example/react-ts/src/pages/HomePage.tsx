@@ -1,22 +1,7 @@
-import Navigator from '../components/Navigator';
-import { useNavigate } from 'wap-router';
+import Template from '../components/Template';
 
 const HomePage = () => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate('/about');
-  };
-
-  return (
-    <div>
-      <Navigator />
-      <div>HomePage</div>
-      <div>
-        <button onClick={handleClick}>Go To About Page</button>
-      </div>
-    </div>
-  );
+  return <Template>"/"</Template>;
 };
 
 export default HomePage;
