@@ -29,9 +29,8 @@ const Router = ({ children }: RouterProps) => {
   };
 
   // popstate 이벤트는 브라우저의 주소창에 변화가 생겼을 때 발생한다.
-  // 브라우저의 주소창에 변화가 생기면 path 상태를 업데이트한다.
-  // 리액트가 브라우저의 주소창에 변화가 생겼음을 알게 되면 path 상태를 업데이트한다.
   useEffect(() => {
+    // popstate 이벤트가 발생하면 window.history.pushState에서 넣은 data(e.state)를 가져온다.
     const handleOnPopState = (e: PopStateEvent) => {
       const hash = e.state?.hash || '';
       const pathname = e.state?.pathname || '/';

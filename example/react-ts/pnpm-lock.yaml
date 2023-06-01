@@ -12,8 +12,8 @@ dependencies:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
   wap-router:
-    specifier: ^0.1.1
-    version: 0.1.1(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^0.1.4
+    version: 0.1.4(react-dom@18.2.0)(react@18.2.0)
 
 devDependencies:
   '@types/react':
@@ -1462,8 +1462,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /wap-router@0.1.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-2QpysY+Gx6/20guD8gGIozCSjmlrp/q+yJfL8tcL7WEtyyUTU8ncL+o2vABFEnmpJZ+NIvwIL8G85Le6B3LY4A==}
+  /wap-router@0.1.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-bm/8PbbJe7GsISVRIs0cm3erVh9eKoHSld0H1vEX2lzZIGPbfJ1YvW0MaJas/mbr+IF7tND9ZWXLVV0bqCMcgg==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'

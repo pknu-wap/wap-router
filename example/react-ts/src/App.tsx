@@ -3,6 +3,7 @@ import AboutPage from './pages/AboutPage';
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import ProductDetailPage from './pages/ProductDetailPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           path="/main/product/:productId/user/:userId"
           element={<ProductDetailPage />}
         />
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );
